@@ -1,6 +1,7 @@
 
 @baseUrl = {{$dev}}
 
+
 ### Sing UP -----------------------
 POST {{baseUrl}}/users/signup
 content-type: application/json
@@ -12,6 +13,7 @@ content-type: application/json
 }
 
 ### Login -----------------------
+# @name loginApi
 POST {{baseUrl}}/users/login
 content-type: application/json
 
@@ -23,14 +25,17 @@ content-type: application/json
 ### List Users -----------------------
 GET {{baseUrl}}/users
 content-type: application/json
+Authorization: Bearer {{loginApi.response.body.accessToken}}
 
 ### Show User -----------------------
 GET {{baseUrl}}/users/dc05aeab-b53e-48ca-87f2-1102d9d7f7b
 content-type: application/json
+Authorization: Bearer {{loginApi.response.body.accessToken}}
 
 ### Create User -----------------------
 POST {{baseUrl}}/users
 content-type: application/json
+Authorization: Bearer {{loginApi.response.body.accessToken}}
 
 {
     "name": "Deelan"

@@ -3,7 +3,7 @@ import serverless from 'serverless-http';
 import express from 'express';
 import { Server } from '@overnightjs/core';
 import { usersController } from './modules/users/user.controller';
-import { handleErrors } from './middlewares/errors.middlewar';
+import { handleErrors } from './middlewares/errors.middleware';
 
 
 class Main extends Server {

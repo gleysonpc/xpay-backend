@@ -5,6 +5,7 @@ export class GeneralError extends Error {
         super();
         this.message = message;
     }
+
     getCode(){
         if(this instanceof BadRequest){
             return statusCodes.BAD_REQUEST;
