@@ -1,7 +1,7 @@
 import { DynamoDB } from 'aws-sdk';
 import { v4 as uuid } from 'uuid';
 import bcript from 'bcryptjs';
-import { InternalError } from '../../common/httpErrors';
+import { Conflict, InternalError } from '../../common/httpErrors';
 
 const {
     LOCAL,
@@ -71,12 +71,17 @@ export class User {
             KeyConditionExpression: 'email = :email',
             ExpressionAttributeValues: { ':email': email },
         };
-        const { Items } = await this.dynamodb.query(params).promise();
-        if (Items?.length) {
-            const user = Items[0] as IUser;
-            return user;
+        try {
+            const { Items } = await this.dynamodb.query(params).promise();
+            if (Items?.length) {
+                const user = Items[0] as IUser;
+                return user;
+            }
+            return null;
+        } catch (error) {
+            console.error(error);
+            throw new InternalError(error as string);
         }
-        return null;
     }
 
     async createUser(name: string) {
@@ -94,6 +99,10 @@ export class User {
     }
 
     async signUp(name: string, email: string, password: string): Promise<IUser> {
+        const emailExists = await this.getUserByEmail(email);
+        if (emailExists) {
+            throw new Conflict(`"${email}" is already in use!`);
+        }
         try {
             const newUser = {
                 id: uuid(),
@@ -101,7 +110,7 @@ export class User {
                 email,
                 password: this.hashPassword(password),
             };
-            await this.dynamodb.put({TableName, Item: newUser}).promise();
+            await this.dynamodb.put({ TableName, Item: newUser }).promise();
             return newUser;
         } catch (error) {
             console.error(error);

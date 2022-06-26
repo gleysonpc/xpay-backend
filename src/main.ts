@@ -21,3 +21,4 @@ class Main extends Server {
 const app = new Main().app;
 
 export const handler = serverless(app);
+
