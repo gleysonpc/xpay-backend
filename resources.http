@@ -1,0 +1,37 @@
+
+@baseUrl = {{$dev}}
+
+### Sing UP -----------------------
+POST {{baseUrl}}/users/signup
+content-type: application/json
+
+{
+  "name": "Gleyson Carvalho",
+  "email": "gleysonpc@gmail.com",
+  "password": "123456"
+}
+
+### Login -----------------------
+POST {{baseUrl}}/users/login
+content-type: application/json
+
+{
+  "email": "gleysonpc@gmail.com",
+  "password": "123456"
+}
+
+### List Users -----------------------
+GET {{baseUrl}}/users
+content-type: application/json
+
+### Show User -----------------------
+GET {{baseUrl}}/users/dc05aeab-b53e-48ca-87f2-1102d9d7f7b
+content-type: application/json
+
+### Create User -----------------------
+POST {{baseUrl}}/users
+content-type: application/json
+
+{
+    "name": "Deelan"
+}
