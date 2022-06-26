@@ -3,7 +3,14 @@ import { v4 as uuid } from 'uuid';
 import bcript from 'bcryptjs';
 import { InternalError } from '../../common/httpErrors';
 
-const { LOCAL, LOCAL_USERS_TABLE_NAME, USERS_TABLE_NAME } = process.env;
+const {
+    LOCAL,
+    LOCAL_USERS_TABLE_NAME,
+    USERS_TABLE_NAME,
+    DYNAMO_LOCAL_REGION,
+    DYNAMO_LOCAL_ENDPOINT,
+} = process.env;
+
 const TableName = (LOCAL ? LOCAL_USERS_TABLE_NAME : USERS_TABLE_NAME) as string;
 const ProjectionExpression = 'id, #name, email';
 const ExpressionAttributeNames = {'#name': 'name'};
@@ -16,7 +23,10 @@ export interface IUser {
 }
 
 export class User {
-    private dynamodb = new DynamoDB.DocumentClient();
+    private dynamodb = new DynamoDB.DocumentClient({
+        region: DYNAMO_LOCAL_REGION,
+        endpoint: DYNAMO_LOCAL_ENDPOINT,
+    });
 
     private hashPassword(password: string): string {
         const salt = bcript.genSaltSync(10);
@@ -43,6 +53,7 @@ export class User {
             TableName,
             Key: { id: userId},
             ProjectionExpression,
+            ExpressionAttributeNames
         };
         try {
             const { Item } = await this.dynamodb.get(params).promise();

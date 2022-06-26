@@ -5,7 +5,6 @@ import { Server } from '@overnightjs/core';
 import { usersController } from './modules/users/user.controller';
 import { handleErrors } from './middlewares/errors.middleware';
 
-
 class Main extends Server {
     constructor() {
         super(process.env.NODE_ENV === 'development');

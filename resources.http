@@ -1,5 +1,5 @@
 
-@baseUrl = {{$dev}}
+@baseUrl = {{$local}}
 
 
 ### Sing UP -----------------------
@@ -28,7 +28,7 @@ content-type: application/json
 Authorization: Bearer {{loginApi.response.body.accessToken}}
 
 ### Show User -----------------------
-GET {{baseUrl}}/users/dc05aeab-b53e-48ca-87f2-1102d9d7f7b
+GET {{baseUrl}}/users/ae974b1b-f470-41ef-b27c-85f5f9d5696f
 content-type: application/json
 Authorization: Bearer {{loginApi.response.body.accessToken}}
 

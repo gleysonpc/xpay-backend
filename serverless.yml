@@ -4,8 +4,10 @@ frameworkVersion: '3'
 useDotenv: true
 
 plugins:
+  - serverless-dynamodb-local
   - serverless-offline
   - serverless-plugin-typescript
+
 
 provider:
   name: aws
@@ -35,3 +37,14 @@ custom:
   UsersTable:
     name: !Ref UsersTable
     arn: !GetAtt UsersTable.Arn
+  dynamodb:
+    stages:
+      - dev
+    start:
+      port: 8000
+      inMemory: true
+      heapInitial: 200m
+      heapMax: 1g
+      migrate: true
+      seed: true
+      convertEmptyValues: true

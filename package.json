@@ -5,7 +5,7 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "dev": "SLS_DEBUG=* LOCAL=true serverless offline"
+    "dev": "SLS_DEBUG=* LOCAL=true NODE_ENV=development serverless offline"
   },
   "dependencies": {
     "@overnightjs/core": "^1.7.6",
@@ -17,6 +17,7 @@
     "http-status-codes": "^2.2.0",
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
+    "serverless-dynamodb-local": "^0.2.40",
     "serverless-http": "^2.7.0",
     "serverless-offline": "^8.8.0",
     "uuid": "^8.3.2"
