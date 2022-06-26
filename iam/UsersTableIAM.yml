@@ -9,3 +9,4 @@ UsersTableIAM:
   Resource:
     - ${self:custom.UsersTable.arn}
     - !Join ['/', ['${self:custom.UsersTable.arn}', 'index', 'userByEmail']]
+
