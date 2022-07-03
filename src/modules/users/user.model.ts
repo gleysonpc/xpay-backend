@@ -1,7 +1,7 @@
 import { DynamoDB } from 'aws-sdk';
 import { v4 as uuid } from 'uuid';
 import bcript from 'bcryptjs';
-import { Conflict, InternalError } from '../../common/httpErrors';
+import { Conflict, InternalError, NotFound } from '../../common/httpErrors';
 
 const {
     LOCAL,
@@ -16,7 +16,7 @@ const ProjectionExpression = 'id, #name, email';
 const ExpressionAttributeNames = {'#name': 'name'};
 
 export interface IUser {
-  id?: string;
+  id: string;
   name: string;
   email: string;
   password?: string;

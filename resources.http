@@ -40,3 +40,17 @@ Authorization: Bearer {{loginApi.response.body.accessToken}}
 {
     "name": "Deelan"
 }
+
+### Create Balance -----------------------
+POST {{baseUrl}}/balances
+content-type: application/json
+Authorization: Bearer {{loginApi.response.body.accessToken}}
+
+{
+    "description": "Mes de Julho"
+}
+
+### List User Balances -----------------------
+GET {{baseUrl}}/balances
+content-type: application/json
+Authorization: Bearer {{loginApi.response.body.accessToken}}

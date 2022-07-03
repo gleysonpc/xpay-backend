@@ -1,20 +1,20 @@
-UsersTable:
+BalancesTable:
   Type: AWS::DynamoDB::Table
   Properties:
-    TableName: XpayUsersTable-${self:provider.stage}
+    TableName: XpayBalancesTable-${self:provider.stage}
     BillingMode: PAY_PER_REQUEST
     AttributeDefinitions:
       - AttributeName: id
         AttributeType: S
-      - AttributeName: email
+      - AttributeName: userId
         AttributeType: S
     KeySchema:
       - AttributeName: id
         KeyType: HASH
     GlobalSecondaryIndexes:
-      - IndexName: userByEmail
+      - IndexName: byUserId
         KeySchema:
-          - AttributeName: email
+          - AttributeName: userId
             KeyType: HASH
         Projection:
           ProjectionType: ALL

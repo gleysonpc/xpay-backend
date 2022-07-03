@@ -17,12 +17,15 @@ provider:
   region: ${opt:region, 'us-east-1'}
   environment:
     USERS_TABLE_NAME: ${self:custom.UsersTable.name}
+    BALANCES_TABLE_NAME: ${self:custom.BalancesTable.name}
   iamRoleStatements:
     - ${file(iam/UsersTableIAM.yml):UsersTableIAM}
+    - ${file(iam/BalancesTableIAM.yml):BalancesTableIAM}
 
 resources:
   Resources:
     UsersTable: ${file(resources/XpayUsersTable.yml):UsersTable}
+    BalancesTable: ${file(resources/XpayBalancesTable.yml):BalancesTable}
 
 functions:
   api:
@@ -37,6 +40,9 @@ custom:
   UsersTable:
     name: !Ref UsersTable
     arn: !GetAtt UsersTable.Arn
+  BalancesTable:
+    name: !Ref BalancesTable
+    arn: !GetAtt BalancesTable.Arn
   dynamodb:
     stages:
       - dev

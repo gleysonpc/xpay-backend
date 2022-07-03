@@ -3,6 +3,7 @@ import serverless from 'serverless-http';
 import express from 'express';
 import { Server } from '@overnightjs/core';
 import { usersController } from './modules/users/user.controller';
+import { balancesController } from './modules/balances/balance.controller';
 import { handleErrors } from './middlewares/errors.middleware';
 
 class Main extends Server {
@@ -14,7 +15,10 @@ class Main extends Server {
     }
 
     private setupControllers() {
-        super.addControllers([usersController]);
+        super.addControllers([
+            usersController,
+            balancesController,
+        ]);
     }
 }
 

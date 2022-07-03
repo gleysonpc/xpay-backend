@@ -1,4 +1,4 @@
-UsersTableIAM:
+BalancesTableIAM:
   Effect: Allow
   Action:
     - dynamodb:PutItem
@@ -7,5 +7,5 @@ UsersTableIAM:
     - dynamodb:UpdateItem
     - dynamodb:Query
   Resource:
-    - ${self:custom.UsersTable.arn}
-    - !Join ['/', ['${self:custom.UsersTable.arn}', 'index', 'userByEmail']]
+    - ${self:custom.BalancesTable.arn}
+    - !Join ['/', ['${self:custom.BalancesTable.arn}', 'index', 'byUserId']]
