@@ -24,7 +24,12 @@
     "typeRoots": [
       "./src/types",
       "./node_modules/@types"
-    ]
+    ],
+    "baseUrl": ".",
+    "paths": {
+        "@middlewares/*": ["./src/middlewares/*"],
+        "@common/*": ["./src/common/*"]
+    }
   },
   "include": ["./src"],
   "exclude": ["./dist"]

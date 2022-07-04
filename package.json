@@ -41,6 +41,7 @@
     "jest": "^28.1.1",
     "prettier": "^2.7.1",
     "serverless-plugin-typescript": "^2.1.2",
+    "serverless-tscpaths": "^0.0.7",
     "supertest": "^6.2.3",
     "ts-jest": "^28.0.5",
     "typescript": "^4.7.4"

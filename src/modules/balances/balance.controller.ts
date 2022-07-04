@@ -2,9 +2,9 @@ import { Controller, Get, Middleware, Post } from '@overnightjs/core';
 import { Request, Response } from 'express';
 import { Balance } from './balance.model';
 import { User } from '../users/user.model';
-import { InternalError, NotFound } from '../../common/httpErrors';
-import { authentication } from '../../middlewares/auth.middleware';
-import { validateBody } from '../../middlewares/validation.middleware';
+import { InternalError, NotFound } from '@common/httpErrors';
+import { authentication } from '@middlewares/auth.middleware';
+import { validateBody } from '@middlewares/validation.middleware';
 import { CreateBalance } from './balance.schemas';
 
 @Controller('balances')

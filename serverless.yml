@@ -7,6 +7,7 @@ plugins:
   - serverless-dynamodb-local
   - serverless-offline
   - serverless-plugin-typescript
+  - serverless-tscpaths
 
 
 provider:

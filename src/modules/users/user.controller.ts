@@ -1,12 +1,12 @@
 import { Controller, Get, Middleware, Post } from '@overnightjs/core';
 import { Request, Response } from 'express';
 
-import { authentication } from '../../middlewares/auth.middleware';
+import { authentication } from '@middlewares/auth.middleware';
 import { User } from './user.model';
-import { validateBody } from '../../middlewares/validation.middleware';
+import { validateBody } from '@middlewares/validation.middleware';
 import { SignUpSchema, LoginUpSchema } from './user.schemas';
 import jwt from 'jsonwebtoken';
-import { NotFound, Unauthorized } from '../../common/httpErrors';
+import { NotFound, Unauthorized } from '@common/httpErrors';
 
 @Controller('users')
 class UsersController {
