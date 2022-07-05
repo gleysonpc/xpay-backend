@@ -5,6 +5,7 @@ import { Server } from '@overnightjs/core';
 import { usersController } from './modules/users/user.controller';
 import { balancesController } from './modules/balances/balance.controller';
 import { handleErrors } from './middlewares/errors.middleware';
+import { earningsController } from './modules/earnings/earning.controller';
 
 class Main extends Server {
     constructor() {
@@ -18,6 +19,7 @@ class Main extends Server {
         super.addControllers([
             usersController,
             balancesController,
+            earningsController,
         ]);
     }
 }

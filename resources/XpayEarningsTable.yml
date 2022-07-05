@@ -1,0 +1,20 @@
+EarningsTable:
+  Type: AWS::DynamoDB::Table
+  Properties:
+    TableName: XpayEarningsTable-${self:provider.stage}
+    BillingMode: PAY_PER_REQUEST
+    AttributeDefinitions:
+      - AttributeName: id
+        AttributeType: S
+      - AttributeName: balanceId
+        AttributeType: S
+    KeySchema:
+      - AttributeName: id
+        KeyType: HASH
+    GlobalSecondaryIndexes:
+      - IndexName: byBalanceId
+        KeySchema:
+          - AttributeName: balanceId
+            KeyType: HASH
+        Projection:
+          ProjectionType: ALL

@@ -54,3 +54,20 @@ Authorization: Bearer {{loginApi.response.body.accessToken}}
 GET {{baseUrl}}/balances
 content-type: application/json
 Authorization: Bearer {{loginApi.response.body.accessToken}}
+
+### Create Earning -----------------------
+POST {{baseUrl}}/balances/b5cc4c44-0509-4b84-9b26-d6a5f0c6c509/earnings
+content-type: application/json
+Authorization: Bearer {{loginApi.response.body.accessToken}}
+
+{
+    "description": "Salario febracis",
+    "amount": 3500.00
+}
+
+### List Earnings -----------------------
+GET  {{baseUrl}}/balances/b5cc4c44-0509-4b84-9b26-d6a5f0c6c509/earnings
+content-type: application/json
+Authorization: Bearer {{loginApi.response.body.accessToken}}
+
+

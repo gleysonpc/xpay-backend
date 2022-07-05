@@ -1,0 +1,11 @@
+EarningsTableIAM:
+  Effect: Allow
+  Action:
+    - dynamodb:PutItem
+    - dynamodb:Scan
+    - dynamodb:GetItem
+    - dynamodb:UpdateItem
+    - dynamodb:Query
+  Resource:
+    - ${self:custom.EarningsTable.arn}
+    - !Join ['/', ['${self:custom.EarningsTable.arn}', 'index', 'byBalanceId']]

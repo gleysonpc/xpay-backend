@@ -19,14 +19,17 @@ provider:
   environment:
     USERS_TABLE_NAME: ${self:custom.UsersTable.name}
     BALANCES_TABLE_NAME: ${self:custom.BalancesTable.name}
+    EARNINGS_TABLE_NAME: ${self:custom.EarningsTable.name}
   iamRoleStatements:
     - ${file(iam/UsersTableIAM.yml):UsersTableIAM}
     - ${file(iam/BalancesTableIAM.yml):BalancesTableIAM}
+    - ${file(iam/EarningsTableIAM.yml):EarningsTableIAM}
 
 resources:
   Resources:
     UsersTable: ${file(resources/XpayUsersTable.yml):UsersTable}
     BalancesTable: ${file(resources/XpayBalancesTable.yml):BalancesTable}
+    EarningsTable: ${file(resources/XpayEarningsTable.yml):EarningsTable}
 
 functions:
   api:
@@ -44,6 +47,10 @@ custom:
   BalancesTable:
     name: !Ref BalancesTable
     arn: !GetAtt BalancesTable.Arn
+  EarningsTable:
+    name: !Ref EarningsTable
+    arn: !GetAtt EarningsTable.Arn
+
   dynamodb:
     stages:
       - dev

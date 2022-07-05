@@ -1,7 +1,7 @@
 import { DynamoDB } from 'aws-sdk';
 import { v4 as uuid } from 'uuid';
 import bcript from 'bcryptjs';
-import { Conflict, InternalError, NotFound } from '../../common/httpErrors';
+import { Conflict, InternalError } from '../../common/httpErrors';
 
 const {
     LOCAL,
